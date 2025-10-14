@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "Pterodactyl egg: Ubuntu XFCE + noVNC"
+  },
+  "name": "Ubuntu XFCE + noVNC",
+  "startup": "/usr/bin/supervisord -n",
+  "docker_images": {
+    "Ubuntu XFCE noVNC": "ghcr.io/<your-gh-username>/ubuntu-xfce-novnc:latest"
+  },
+  "environment": {
+    "RESOLUTION": {
+      "description": "Screen resolution (e.g. 1280x800)",
+      "default": "1280x800",
+      "required": false
+    },
+    "VNC_PASS": {
+      "description": "VNC password",
+      "default": "password",
+      "required": false
+    }
+  },
+  "config": {
+    "ports": [
+      {
+        "name": "noVNC Port",
+        "port": 6080,
+        "description": "Browser-accessible port for noVNC"
+      }
+    ]
+  },
+  "scripts": {
+    "installation": {
+      "script": "#!/bin/bash\nexit 0",
+      "container": "ubuntu:22.04",
+      "entrypoint": "bash"
+    }
+  }
+}
